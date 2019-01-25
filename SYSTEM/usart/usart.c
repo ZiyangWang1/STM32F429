@@ -149,7 +149,6 @@ void USART1_IRQHandler(void)
 	{
 	 timeout++;////³¬Ê±´¦Àí
      if(timeout>maxDelay) break;		
-	
 	}
      
 	timeout=0;

@@ -1,38 +1,49 @@
 实验器材:
-	阿波罗STM32F429开发板 
+	阿波罗STM32F429开发板
 	
 实验目的:
-	本实验为新建工程实验，仅供大家新建工程时参考。
-	新建工程详细步骤，请看《STM32F429开发指南-库函数版本》第3.3节。
+	学习独立看门狗的使用
 	
 硬件资源:
-	1,串口1(波特率:115200,PA9/PA10连接在板载USB转串口芯片CH340上面)
+	1,DS0(连接在PB1) 
+	2,独立看门狗(IWDG)
+	3,KEY_UP按键(连接在PA0,也称之为WK_UP)
+	
 	
 实验现象:
-	本实验下载后，DS0和DS1闪烁。 
-
-工程文件来源：
-
-①startup_stm32f429xx.s                                                     ->   \STM32Cube_FW_F4_V1.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm
-②cmsis_armcc.h，core_cm4.h，core_cmFunc.h，core_cmInstr.h ，core_cmSimd.h  ->   \STM32Cube_FW_F4_V1.10.0\Drivers\CMSIS\Include
-
-③stm32f4xx.h，stem_stm32f4xx.h和stm32f429xx.                               ->   \STM32Cube_FW_F4_V1.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
-
-④stm32f4xx_it.h，stm32f4xx_hal_conf.h 和main.h                             ->   \STM32Cube_FW_F4_V1.10.0\Projects\STM32F429I-Discovery\Templates\Inc
-⑤system_stm32f4xx.c，stm32f4xx_it.c, stm32f4xx_hal_msp.c 和main.c          ->   \STM32Cube_FW_F4_V1.10.0\Projects\STM32F429I-Discovery\Templates\Src
-
-SYSTEM文件夹，任何一个HAL库实验工程中有
+	本实验,如果看门狗没有复位，开发板的DS0将常亮，如果WK_UP按键按下，就喂狗，只
+	要WK_UP不停的按，看门狗就一直不会产生复位，保持DS0的常亮，一旦超过看门狗定溢
+	出时间（Tout=1s）还没按，那么将会导致程序重启，这将导致DS0熄灭一次。 
 	
 注意事项:
-	无.
+	无. 
+	 
+参考资料：阿波罗STM32F429开发指南-库函数版本.pdf 第十章
 
 
-					正点原子@ALIENTEK
-					2016-6-24
-					广州市星翼电子科技有限公司
-					电话：020-38271790
-					传真：020-36773971
-					购买：http://shop62103354.taobao.com
-					http://shop62057469.taobao.com
-					公司网站：www.alientek.com
-					技术论坛：www.openedv.com
+-------------------------------------------------------------------------------------------
+
+◆其他重要连接：
+  开发板光盘资料下载地址（视频+文档+源码等）：http://www.openedv.com/posts/list/13912.htm
+
+
+◆友情提示：如果您想以后及时免费的收到正点原子所有开发板资料更新增加通知，请关注微信公众平台：
+ 2种添加方法：（动动手提升您的学习效率，惊喜不断哦）
+（1）打开微信->添加朋友->公众号->输入“正点原子”->点击关注
+（2）打开微信->添加朋友->输入“alientek_stm32"->点击关注
+ 具体微信添加方法，请参考帖子：http://www.openedv.com/posts/list/45157.htm
+ 
+
+
+						
+
+						淘宝店铺： http://openedv.taobao.com
+						           http://eboard.taobao.com
+						公司网站：www.alientek.com
+						技术论坛：www.openedv.com
+                                                微信公众平台：正点原子
+						电话：020-38271790
+						传真：020-36773971
+						广州市星翼电子科技有限公司
+						正点原子@ALIENTEK
+						     2016-6月
